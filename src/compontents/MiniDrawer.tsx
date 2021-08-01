@@ -34,10 +34,9 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
     overflowX: 'hidden',
-    width: `calc(${theme.spacing(7)} + 1px)`,
     '& .MuiDrawer-paper': {
       overflowX: 'hidden',
-      width: `calc(${theme.spacing(7)} + 1px)`,
+      width: `calc(${theme.spacing(8)} + 1px)`,
     }
   }),
 );
@@ -61,11 +60,12 @@ export default function MiniDrawer() {
             
           </IconButton>
         </DrawerHeader>
-        <Divider />
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
+            <ListItem 
+              button key={text} 
+            >
+              <ListItemIcon sx={{pl:0.5}}>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
 
@@ -76,10 +76,9 @@ export default function MiniDrawer() {
         <List>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>
+              <ListItemIcon sx={{pl:0.5}}>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
-              <ListItemText primary={text} />
             </ListItem>
           ))}
         </List>
