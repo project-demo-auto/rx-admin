@@ -10,6 +10,7 @@ import MuiTooltip, { TooltipProps, tooltipClasses } from '@material-ui/core/Tool
 import { DARK_THEME_META } from '../consts';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { MODULES } from '../data/modules';
+import { observer } from 'mobx-react';
 
 const Logo = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -48,7 +49,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer() {
+export const MiniDrawer = observer(() => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const theme = createTheme(DARK_THEME_META);
@@ -183,4 +184,4 @@ export default function MiniDrawer() {
 
       </ThemeProvider>
   );
-}
+})
