@@ -25,8 +25,8 @@ export const LIGHT_THEME_META: ThemeOptions = {
       main: PRIMARY_COLOR,
     },
     background:{
-      default:'#161d31',
-      paper:'#283046'
+      default:'#f8f8f8',
+      paper:'#ffffff'
     }
   },
 }

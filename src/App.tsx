@@ -3,10 +3,10 @@ import React from 'react';
 import './App.css';
 import MiniDrawer from './compontents/MiniDrawer';
 import {observer} from 'mobx-react';
-import { DARK_THEME_META } from './consts';
+import { LIGHT_THEME_META } from './consts';
 
 const App = observer(() => {
-  const theme = createTheme(DARK_THEME_META);
+  const theme = createTheme(LIGHT_THEME_META);
 
   return (
     <ThemeProvider theme={theme}>
