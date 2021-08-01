@@ -1,25 +1,24 @@
 import * as React from 'react';
-import { styled, useTheme, Theme, CSSObject } from '@material-ui/core/styles';
+import { styled } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import MuiDrawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import { createTheme, SvgIcon, ThemeProvider } from '@material-ui/core';
+import { Avatar, createTheme, IconButton, SvgIcon, ThemeProvider } from '@material-ui/core';
 import MuiTooltip, { TooltipProps, tooltipClasses } from '@material-ui/core/Tooltip';
 import { PRIMARY_COLOR } from '../consts';
+import { Delete } from '@material-ui/icons';
 
-const DrawerHeader = styled('div')(({ theme }) => ({
+const Logo = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   padding: theme.spacing(0, 1),
-  color: theme.palette.primary.main,
+  color: PRIMARY_COLOR,
   ...theme.mixins.toolbar,
 }));
 
@@ -39,12 +38,14 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     overflowX: 'hidden',
     '& .MuiDrawer-paper': {
       overflowX: 'hidden',
-      width: `calc(${theme.spacing(8)} + 1px)`,
-      background: '#1a233a',
+      width: theme.spacing(8),
+      background: '#283046',
       boxShadow: theme.shadows[2],
       display: 'flex',
       flexFlow: 'column',
       justifyContent: 'space-between',
+      border: 0,
+      alignItmes: 'center',
     }
   }),
 );
@@ -79,18 +80,26 @@ export default function MiniDrawer() {
             width:'80px',
           }}
         >
-          <div>
-            <DrawerHeader>
+          <Box>
+            <Logo>
               <SvgIcon fontSize = "large" >
                 <path fill="currentColor" d="M22,2C22,2 14.36,1.63 8.34,9.88C3.72,16.21 2,22 2,22L3.94,21C5.38,18.5 6.13,17.47 7.54,16C10.07,16.74 12.71,16.65 15,14C13,13.44 11.4,13.57 9.04,13.81C11.69,12 13.5,11.6 16,12L17,10C15.2,9.66 14,9.63 12.22,10.04C14.19,8.65 15.56,7.87 18,8L19.21,6.07C17.65,5.96 16.71,6.13 14.92,6.57C16.53,5.11 18,4.45 20.14,4.32C20.14,4.32 21.19,2.43 22,2Z" />
               </SvgIcon>
-            </DrawerHeader>
+            </Logo>
             <List>
               {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                 <ListItem 
                   button key={text} 
                   selected={selectedIndex === index}
                   onClick={(event) => handleListItemClick(event, index)}
+                  sx = {{
+                    '&.Mui-selected':{
+                      //backgroundColor: '#161e31',
+                      '&:hover':{
+                        //backgroundColor: '#161e31',
+                      }
+                    }
+                  }}
                 >
                   <Tooltip title={text} arrow placement="right">
                     <ListItemIcon 
@@ -99,7 +108,10 @@ export default function MiniDrawer() {
                         pt: 0.6, 
                         pb: 0.6, 
                         minWidth:26,
-                        color: selectedIndex === index ? '#fff' :'#7d8ba0'
+                        color: selectedIndex === index ? '#fff' :'#7d8ba0',
+                        '&:hover':{
+                          color: selectedIndex === index ? '#fff' :'rgba(255,255,255,0.8)',
+                        }
                       }}>
                       <InboxIcon />
                     </ListItemIcon>
@@ -108,22 +120,33 @@ export default function MiniDrawer() {
                 </ListItem>
               ))}
             </List>
-          </div>
+          </Box>
           
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon sx={{pl:0.5,color: '#7d8ba0'}}>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-              </ListItem>
-            ))}
-          </List>
+          <Box sx={{
+            display: 'flex',
+            flexFlow: 'column',
+            alignItems: 'center',
+            color: '#7d8ba0',
+            pb:1,
+          }}>
+            <IconButton aria-label="delete" size="large" color = "inherit" 
+              sx={{
+                '&:hover':{
+                  color:'rgba(255,255,255,0.8)',
+                }
+              }}
+            >
+              <Delete />
+            </IconButton>
+
+            <IconButton>
+              <Avatar alt="User avatar" src="/static/images/avatar.jpg" sx={{ width: 32, height: 32 }} />
+            </IconButton>            
+          </Box>
         </Drawer>
 
       </ThemeProvider>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
