@@ -68,6 +68,7 @@ export default function MiniDrawer() {
           open = {true}
           sx={{
             width:'80px',
+            display: { sm: 'block', xs: 'none' }
           }}
         >
           <Box>
