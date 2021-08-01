@@ -2,22 +2,17 @@ import * as React from 'react';
 import { styled, useTheme, Theme, CSSObject } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import MuiDrawer from '@material-ui/core/Drawer';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import { SvgIcon, Tooltip } from '@material-ui/core';
+import { createTheme, SvgIcon, ThemeProvider } from '@material-ui/core';
+import MuiTooltip, { TooltipProps, tooltipClasses } from '@material-ui/core/Tooltip';
+import { PRIMARY_COLOR } from '../consts';
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -28,6 +23,13 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
+const Tooltip = styled(({ className, ...props }: TooltipProps) => (
+  <MuiTooltip {...props} arrow classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    padding: theme.spacing(1.2, 2),
+  },
+}));
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme }) => ({
@@ -39,55 +41,69 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
       overflowX: 'hidden',
       width: `calc(${theme.spacing(8)} + 1px)`,
       background: '#1a233a',
-      boxShadow: theme.shadows[6],
+      boxShadow: theme.shadows[2],
+      display: 'flex',
+      flexFlow: 'column',
+      justifyContent: 'space-between',
     }
   }),
 );
 
 export default function MiniDrawer() {
-  const theme = useTheme();
-
+  const theme = createTheme({
+    palette: {
+      primary:{
+        main: PRIMARY_COLOR,
+      },
+      mode: 'dark',
+    },
+  });
 
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <Drawer 
-        variant="permanent" 
-        open = {true}
-        sx={{
-          width:'80px',
-        }}
-      >
-        <DrawerHeader>
-          <SvgIcon fontSize = "large" >
-            <path fill="currentColor" d="M22,2C22,2 14.36,1.63 8.34,9.88C3.72,16.21 2,22 2,22L3.94,21C5.38,18.5 6.13,17.47 7.54,16C10.07,16.74 12.71,16.65 15,14C13,13.44 11.4,13.57 9.04,13.81C11.69,12 13.5,11.6 16,12L17,10C15.2,9.66 14,9.63 12.22,10.04C14.19,8.65 15.56,7.87 18,8L19.21,6.07C17.65,5.96 16.71,6.13 14.92,6.57C16.53,5.11 18,4.45 20.14,4.32C20.14,4.32 21.19,2.43 22,2Z" />
-          </SvgIcon>
-        </DrawerHeader>
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem 
-              button key={text} 
-            >
-              <Tooltip title={text} arrow placement="right">
-                <ListItemIcon sx={{ml: 0.5, pt: 0.6, pb: 0.6, minWidth:26}}>
-                  <InboxIcon />
-                </ListItemIcon>
-              </Tooltip>
+      <ThemeProvider theme={theme}>
+        <Drawer 
+          variant="permanent" 
+          open = {true}
+          sx={{
+            width:'80px',
+          }}
+        >
+          <div>
+            <DrawerHeader>
+              <SvgIcon fontSize = "large" >
+                <path fill="currentColor" d="M22,2C22,2 14.36,1.63 8.34,9.88C3.72,16.21 2,22 2,22L3.94,21C5.38,18.5 6.13,17.47 7.54,16C10.07,16.74 12.71,16.65 15,14C13,13.44 11.4,13.57 9.04,13.81C11.69,12 13.5,11.6 16,12L17,10C15.2,9.66 14,9.63 12.22,10.04C14.19,8.65 15.56,7.87 18,8L19.21,6.07C17.65,5.96 16.71,6.13 14.92,6.57C16.53,5.11 18,4.45 20.14,4.32C20.14,4.32 21.19,2.43 22,2Z" />
+              </SvgIcon>
+            </DrawerHeader>
+            <List>
+              {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                <ListItem 
+                  button key={text} 
+                >
+                  <Tooltip title={text} arrow placement="right">
+                    <ListItemIcon sx={{ml: 0.5, pt: 0.6, pb: 0.6, minWidth:26}}>
+                      <InboxIcon />
+                    </ListItemIcon>
+                  </Tooltip>
 
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon sx={{pl:0.5}}>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
+                </ListItem>
+              ))}
+            </List>
+          </div>
+          
+          <List>
+            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon sx={{pl:0.5}}>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+              </ListItem>
+            ))}
+          </List>
+        </Drawer>
+
+      </ThemeProvider>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Typography paragraph>
