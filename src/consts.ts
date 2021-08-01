@@ -1,1 +1,1 @@
-export const PRIMARY_COLOR = '#5a8dee';
+export const PRIMARY_COLOR = '#7367f0';

@@ -7,11 +7,11 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import { Avatar, createTheme, IconButton, SvgIcon, ThemeProvider } from '@material-ui/core';
 import MuiTooltip, { TooltipProps, tooltipClasses } from '@material-ui/core/Tooltip';
 import { PRIMARY_COLOR } from '../consts';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
+import { MODULES } from '../data/modules';
 
 const Logo = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -87,38 +87,42 @@ export default function MiniDrawer() {
               </SvgIcon>
             </Logo>
             <List>
-              {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                <ListItem 
-                  button key={text} 
-                  selected={selectedIndex === index}
-                  onClick={(event) => handleListItemClick(event, index)}
-                  sx = {{
-                    '&.Mui-selected':{
-                      //backgroundColor: '#161e31',
-                      '&:hover':{
-                        //backgroundColor: '#161e31',
-                      }
-                    }
-                  }}
-                >
-                  <Tooltip title={text} arrow placement="right">
-                    <ListItemIcon 
-                      sx={{
-                        ml: 0.5, 
-                        pt: 0.6, 
-                        pb: 0.6, 
-                        minWidth:26,
-                        color: selectedIndex === index ? '#fff' :'#7d8ba0',
-                        '&:hover':{
-                          color: selectedIndex === index ? '#fff' :'rgba(255,255,255,0.8)',
-                        }
-                      }}>
-                      <InboxIcon />
-                    </ListItemIcon>
-                  </Tooltip>
-
-                </ListItem>
-              ))}
+              {
+                MODULES.map((module, index) => {
+                  return (
+                    <ListItem 
+                      button key={module.title} 
+                      selected={selectedIndex === index}
+                      onClick={(event) => handleListItemClick(event, index)}
+                    >
+                      <Tooltip title={module.title} arrow placement="right">
+                        <ListItemIcon 
+                          sx={{
+                            ml: 0.5, 
+                            pt: 0.6, 
+                            pb: 0.6, 
+                            minWidth:26,
+                            color: selectedIndex === index ? '#fff' :'#7d8ba0',
+                            '&:hover':{
+                              color: selectedIndex === index ? '#fff' :'rgba(255,255,255,0.8)',
+                            }
+                          }}>
+                          <Box 
+                            dangerouslySetInnerHTML={{__html: module.icon}}
+                            sx={{
+                              display:'flex',
+                              alignItems:'center',
+                            }}
+                          >
+                          </Box>
+                          
+                        </ListItemIcon>
+                      </Tooltip>
+    
+                    </ListItem>                    
+                  )
+                })
+              }
             </List>
           </Box>
           
@@ -139,8 +143,8 @@ export default function MiniDrawer() {
               <Brightness4Icon />
             </IconButton>
 
-            <IconButton sx={{mt:1}}>
-              <Avatar alt="User avatar" src="/static/images/avatar.jpg" sx={{ width: 32, height: 32 }} />
+            <IconButton sx={{mt:1}} size="large">
+              <Avatar alt="User avatar" src="/static/images/avatar.jpg" sx={{ width: 28, height: 28 }} />
             </IconButton>            
           </Box>
         </Drawer>
