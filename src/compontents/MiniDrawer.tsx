@@ -132,7 +132,7 @@ export default function MiniDrawer() {
             <IconButton aria-label="delete" size="large" color = "inherit" 
               sx={{
                 '&:hover':{
-                  color:'rgba(255,255,255,0.8)',
+                  color:'rgba(255,255,255,0.9)',
                 }
               }}
             >
