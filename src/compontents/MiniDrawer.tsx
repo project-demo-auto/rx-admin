@@ -183,9 +183,11 @@ export default function MiniDrawer() {
               </IconButton>
             </Tooltip>
 
-            <IconButton sx={{mt:1}} size="large">
-              <Avatar alt="User avatar" src="/static/images/avatar.jpg" sx={{ width: 28, height: 28 }} />
-            </IconButton>            
+            <Tooltip title={'账号管理'} arrow placement="right">
+              <IconButton sx={{mt:1}} size="large">
+                <Avatar alt="User avatar" src="/static/images/avatar.jpg" sx={{ width: 28, height: 28 }} />
+              </IconButton>
+            </Tooltip>            
           </Box>
         </Drawer>
 
