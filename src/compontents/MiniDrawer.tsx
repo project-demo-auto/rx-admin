@@ -50,6 +50,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export default function MiniDrawer() {
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+
   const theme = createTheme({
     palette: {
       primary:{
@@ -58,6 +60,13 @@ export default function MiniDrawer() {
       mode: 'dark',
     },
   });
+
+  const handleListItemClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    index: number,
+  ) => {
+    setSelectedIndex(index);
+  };
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -80,9 +89,18 @@ export default function MiniDrawer() {
               {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                 <ListItem 
                   button key={text} 
+                  selected={selectedIndex === index}
+                  onClick={(event) => handleListItemClick(event, index)}
                 >
                   <Tooltip title={text} arrow placement="right">
-                    <ListItemIcon sx={{ml: 0.5, pt: 0.6, pb: 0.6, minWidth:26}}>
+                    <ListItemIcon 
+                      sx={{
+                        ml: 0.5, 
+                        pt: 0.6, 
+                        pb: 0.6, 
+                        minWidth:26,
+                        color: selectedIndex === index ? '#fff' :'#7d8ba0'
+                      }}>
                       <InboxIcon />
                     </ListItemIcon>
                   </Tooltip>
@@ -95,7 +113,7 @@ export default function MiniDrawer() {
           <List>
             {['All mail', 'Trash', 'Spam'].map((text, index) => (
               <ListItem button key={text}>
-                <ListItemIcon sx={{pl:0.5}}>
+                <ListItemIcon sx={{pl:0.5,color: '#7d8ba0'}}>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
               </ListItem>
