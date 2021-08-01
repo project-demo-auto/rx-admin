@@ -3,14 +3,11 @@ import { styled } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import MuiDrawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import { Avatar, createTheme, IconButton, SvgIcon, ThemeProvider } from '@material-ui/core';
 import MuiTooltip, { TooltipProps, tooltipClasses } from '@material-ui/core/Tooltip';
-import { PRIMARY_COLOR } from '../consts';
-import Brightness4Icon from '@material-ui/icons/Brightness4';
+import { DARK_THEME_META } from '../consts';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { MODULES } from '../data/modules';
 
@@ -19,7 +16,7 @@ const Logo = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   padding: theme.spacing(0, 1),
-  color: PRIMARY_COLOR,
+  color: theme.palette.primary.main,
   ...theme.mixins.toolbar,
 }));
 
@@ -40,7 +37,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     '& .MuiDrawer-paper': {
       overflowX: 'hidden',
       width: theme.spacing(9),
-      background: '#283046',
+      background: theme.palette.background.paper,
       boxShadow: theme.shadows[2],
       display: 'flex',
       flexFlow: 'column',
@@ -54,14 +51,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function MiniDrawer() {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  const theme = createTheme({
-    palette: {
-      primary:{
-        main: PRIMARY_COLOR,
-      },
-      mode: 'light',
-    },
-  });
+  const theme = createTheme(DARK_THEME_META);
 
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -71,8 +61,7 @@ export default function MiniDrawer() {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
+
       <ThemeProvider theme={theme}>
         <Drawer 
           variant="permanent" 
@@ -104,9 +93,9 @@ export default function MiniDrawer() {
                         minWidth: '48px',
                         height:'40px',
                         '&.Mui-selected':{
-                          bgcolor: PRIMARY_COLOR,
+                          bgcolor: theme.palette.primary.main,
                           '&:hover':{
-                            bgcolor: PRIMARY_COLOR,
+                            bgcolor: theme.palette.primary.main,
                           },
                         },
                         display:'flex',
@@ -192,10 +181,5 @@ export default function MiniDrawer() {
         </Drawer>
 
       </ThemeProvider>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-
-              dd
-      </Box>
-    </Box>
   );
 }
