@@ -39,7 +39,7 @@ export const MODULES = [
     url:'/public-sea'
   },
   {
-    title:'更多应用',
+    title:'应用管理',
     icon:`
       <svg style="width:24px;height:24px" viewBox="0 0 24 24">
         <path fill="currentColor" d="M13 3V11H21V3H13M3 21H11V13H3V21M3 3V11H11V3H3M13 16H16V13H18V16H21V18H18V21H16V18H13V16Z" />

@@ -5,7 +5,8 @@ import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { observer } from 'mobx-react';
-import { Paper } from '@material-ui/core';
+import { Box, Paper, SvgIcon } from '@material-ui/core';
+import { MODULES } from '../data/modules';
 
 export const Navigation = observer(() => {
   const [value, setValue] = React.useState(0);
@@ -28,9 +29,34 @@ export const Navigation = observer(() => {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+        {
+          MODULES.map((module, index) => {
+            return (
+              index < 4
+                ? <BottomNavigationAction 
+                    key={module.title}
+                    label={module.title} 
+                    icon={
+                      <Box 
+                        dangerouslySetInnerHTML={{__html: module.icon}}
+                        sx={{
+                          display:'flex',
+                          alignItems:'center',
+                        }}
+                      >
+                      </Box>
+                    } 
+                  />
+                : undefined
+            )
+          })
+        }
+
+        <BottomNavigationAction label="更多" icon={
+          <SvgIcon>
+             <path fill="currentColor" d="M16,12A2,2 0 0,1 18,10A2,2 0 0,1 20,12A2,2 0 0,1 18,14A2,2 0 0,1 16,12M10,12A2,2 0 0,1 12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12M4,12A2,2 0 0,1 6,10A2,2 0 0,1 8,12A2,2 0 0,1 6,14A2,2 0 0,1 4,12Z" />
+          </SvgIcon>
+        } />
       </BottomNavigation>
     </Paper>
   );
