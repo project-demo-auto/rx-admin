@@ -11,6 +11,7 @@ import { Avatar, createTheme, IconButton, SvgIcon, ThemeProvider } from '@materi
 import MuiTooltip, { TooltipProps, tooltipClasses } from '@material-ui/core/Tooltip';
 import { PRIMARY_COLOR } from '../consts';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
+import SettingsIcon from '@material-ui/icons/Settings';
 import { MODULES } from '../data/modules';
 
 const Logo = styled('div')(({ theme }) => ({
@@ -141,6 +142,16 @@ export default function MiniDrawer() {
               }}
             >
               <Brightness4Icon />
+            </IconButton>
+
+            <IconButton aria-label="delete" size="large" color = "inherit" 
+              sx={{
+                '&:hover':{
+                  color:'rgba(255,255,255,0.9)',
+                }
+              }}
+            >
+              <SettingsIcon />
             </IconButton>
 
             <IconButton sx={{mt:1}} size="large">
