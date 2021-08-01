@@ -11,7 +11,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import { Avatar, createTheme, IconButton, SvgIcon, ThemeProvider } from '@material-ui/core';
 import MuiTooltip, { TooltipProps, tooltipClasses } from '@material-ui/core/Tooltip';
 import { PRIMARY_COLOR } from '../consts';
-import { Delete } from '@material-ui/icons';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
 
 const Logo = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -136,10 +136,10 @@ export default function MiniDrawer() {
                 }
               }}
             >
-              <Delete />
+              <Brightness4Icon />
             </IconButton>
 
-            <IconButton>
+            <IconButton sx={{mt:1}}>
               <Avatar alt="User avatar" src="/static/images/avatar.jpg" sx={{ width: 32, height: 32 }} />
             </IconButton>            
           </Box>
