@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+[演示地址](https://rx-sales.vercel.app/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
