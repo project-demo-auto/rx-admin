@@ -7,7 +7,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import { Avatar, createTheme, IconButton, SvgIcon, ThemeProvider } from '@material-ui/core';
 import MuiTooltip, { TooltipProps, tooltipClasses } from '@material-ui/core/Tooltip';
-import { DARK_THEME_META } from '../consts';
+import { DARK_THEME_META, LIGHT_THEME_META, MODE_LIGHT } from '../consts';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { MODULES } from '../data/modules';
 import { observer } from 'mobx-react';
@@ -17,7 +17,7 @@ const Logo = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   padding: theme.spacing(0, 1),
-  color: theme.palette.primary.main,
+  color: theme.palette.mode === MODE_LIGHT ? theme.palette.primary.main : "#fff",
   ...theme.mixins.toolbar,
 }));
 
@@ -39,7 +39,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
       overflowX: 'hidden',
       width: theme.spacing(9),
       background: theme.palette.background.paper,
-      boxShadow: theme.shadows[2],
+      boxShadow: theme.shadows[1],
       display: 'flex',
       flexFlow: 'column',
       justifyContent: 'space-between',
