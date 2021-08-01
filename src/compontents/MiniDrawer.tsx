@@ -38,7 +38,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     '& .MuiDrawer-paper': {
       overflowX: 'hidden',
       width: `calc(${theme.spacing(8)} + 1px)`,
-      //background: '#1a233a',
+      background: '#1a233a',
+      boxShadow: theme.shadows[6],
     }
   }),
 );
