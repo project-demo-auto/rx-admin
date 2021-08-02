@@ -1,7 +1,5 @@
 import * as React from 'react';
-import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
@@ -14,7 +12,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { Button, useTheme } from '@material-ui/core';
+import { Button, useTheme, InputBase, InputAdornment } from '@material-ui/core';
+import { Search } from '@material-ui/icons';
 
 const drawerWidth = 240;
 
@@ -92,9 +91,19 @@ export function Email(props: Props) {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap component="div">
-          Responsive drawer
-        </Typography>
+        
+        <InputBase
+          sx={{ ml: 1, flex: 1 }}
+          placeholder="Search mail"
+          startAdornment={
+            <InputAdornment position="start">
+              <Search />
+            </InputAdornment>
+          }
+          inputProps={{ 
+            'aria-label': 'Search mail',
+          }}
+        />
       </Toolbar>
       <Box
         component="nav"
@@ -128,7 +137,7 @@ export function Email(props: Props) {
         </Box>
       </Box>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Toolbar variant = "dense" />
+        <Toolbar variant = "dense" sx={{zIndex:-1}}/>
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non

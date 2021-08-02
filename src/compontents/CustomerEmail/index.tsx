@@ -108,7 +108,7 @@ export const Customers = observer((props: Props) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            工具条
+            MicroSoft
           </Typography>
         </Toolbar>
       </AppBar>
