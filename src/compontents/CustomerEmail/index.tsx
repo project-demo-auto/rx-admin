@@ -48,7 +48,6 @@ export const Customers = observer((props: Props) => {
           sx={{
             borderRadius: '18px',
             height: '36px',
-            backgroundColor: theme.palette.background.paper,
             pl: 1,
             border: theme.palette.divider + ' solid 1px',
             display: 'flex',
