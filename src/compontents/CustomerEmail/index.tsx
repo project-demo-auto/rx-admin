@@ -112,6 +112,12 @@ export const Customers = observer(() => {
     <ResponsiveLayout
       drawer = {drawer}
       toolbar = {toolbar}
+      toolbarProps = {{
+        sx:{
+          borderBottom: theme.palette.divider + ' solid 1px',
+        }
+      }}
+
     >
       {
         content
