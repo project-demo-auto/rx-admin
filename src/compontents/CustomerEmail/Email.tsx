@@ -14,7 +14,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { useTheme } from '@material-ui/core';
+import { Button, useTheme } from '@material-ui/core';
 
 const drawerWidth = 240;
 
@@ -37,7 +37,15 @@ export function Email(props: Props) {
 
   const drawer = (
     <div>
-      <Toolbar />
+      <Box 
+        sx = {{
+          p: theme.spacing(2),
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+        <Button fullWidth variant="contained">写邮件</Button>
+      </Box>
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
