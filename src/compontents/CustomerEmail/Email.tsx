@@ -103,10 +103,13 @@ export function Email() {
       drawer = {drawer}
       toolbar = {toolbar}
       toolbarProps = {{
-        //varient : 'dense'
+        variant:'dense',
+        sx:{
+          borderBottom: theme.palette.divider + ' solid 1px',
+        }
       }}
     >
-      <Box sx={{flex:1, display:'flex', flexFlow: 'column', overflowY: 'auto'}}>
+      <Box sx={{flex:1, display:'flex', flexFlow: 'column', overflowY: 'auto', p: 3}}>
         {content}
       </Box>
     </ResponsiveLayout>

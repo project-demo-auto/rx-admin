@@ -3,18 +3,17 @@ import Box from '@material-ui/core/Box';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
+import Toolbar, { ToolbarProps } from '@material-ui/core/Toolbar';
 import { useTheme } from '@material-ui/core';
 
 export const ResponsiveLayout = (props: {
-  expandAt?:'lg'|'md'|'sm'|'xs',
   drawerWidth?: number,
   drawer?: any,
   toolbar?: any,
   children?: any,
-  toolbarProps?: any,
+  toolbarProps?: ToolbarProps,
 }) => {
-  const {expandAt='sm', drawerWidth=260, drawer, toolbar, toolbarProps = {}, children} = props;
+  const {drawerWidth=260, drawer, toolbar, toolbarProps = {}, children} = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const theme = useTheme();
 
@@ -58,9 +57,9 @@ export const ResponsiveLayout = (props: {
           sx={{
             display: { xs:'none', sm: 'none', md:'none', lg: 'block' },
             width: drawerWidth, 
-            borderLeft: theme.palette.divider + ' solid 1px',
+            //borderLeft: theme.palette.divider + ' solid 1px',
             borderRight: theme.palette.divider + ' solid 1px',
-            backgroundColor: theme.palette.background.default,
+            //backgroundColor: theme.palette.background.default,
             height: '100%'
           }}
         >
