@@ -43,10 +43,16 @@ export const Customers = observer((props: Props) => {
   const drawer = (
     <div>
       <Toolbar>
-        <OutlinedInput 
+        <InputBase 
           size = "small" 
           sx={{
-            borderRadius: '20px',
+            borderRadius: '18px',
+            height: '36px',
+            backgroundColor: theme.palette.background.paper,
+            pl: 1,
+            border: theme.palette.divider + ' solid 1px',
+            display: 'flex',
+            pt: 0.4
           }} 
           startAdornment={
             <InputAdornment position="start">
