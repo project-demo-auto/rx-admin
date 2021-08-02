@@ -15,8 +15,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { observer } from 'mobx-react';
-import { useTheme } from '@material-ui/core';
+import { InputAdornment, OutlinedInput, TextField, useTheme } from '@material-ui/core';
 import { MINI_DRAWER } from '../../consts';
+import { Search } from '@material-ui/icons';
+import InputBase from '@material-ui/core/InputBase';
 
 const drawerWidth = 260;
 
@@ -39,7 +41,19 @@ export const Customers = observer((props: Props) => {
 
   const drawer = (
     <div>
-      <Toolbar />
+      <Toolbar>
+        <OutlinedInput 
+          size = "small" 
+          sx={{
+            borderRadius: '20px',
+          }} 
+          startAdornment={
+            <InputAdornment position="start">
+              <Search />
+            </InputAdornment>
+          }
+        />
+      </Toolbar>
       <Divider />
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -121,6 +135,7 @@ export const Customers = observer((props: Props) => {
               boxSizing: 'border-box', 
               width: drawerWidth, 
               left: theme.spacing(MINI_DRAWER), 
+              borderLeft: theme.palette.divider + ' solid 1px'
             },
           }}
           open

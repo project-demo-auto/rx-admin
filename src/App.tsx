@@ -3,7 +3,7 @@ import React from 'react';
 import './App.css';
 import { MiniDrawer } from './compontents/MiniDrawer';
 import { observer } from 'mobx-react';
-import { LIGHT_THEME_META } from './consts';
+import { LIGHT_THEME_META, DARK_THEME_META } from './consts';
 import { Navigation } from './compontents/Navigation';
 import { Customers } from './compontents/Customers';
 
