@@ -22,12 +22,13 @@ export const DARK_THEME_META: ThemeOptions = {
 export const LIGHT_THEME_META: ThemeOptions = {
   palette: {
     mode: 'light',
-    primary:{
+    primary: {
       main: PRIMARY_COLOR,
     },
-    background:{
-      default:'#f0f2f5',
-      paper:'#ffffff'
-    }
+    background: {
+      default: '#f9f9f9',
+      paper: '#ffffff'
+    },
+    divider: '#ebe9f1',
   },
 }

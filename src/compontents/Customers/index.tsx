@@ -54,7 +54,6 @@ export const Customers = observer((props: Props) => {
           }
         />
       </Toolbar>
-      <Divider />
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
@@ -86,9 +85,15 @@ export const Customers = observer((props: Props) => {
       <CssBaseline />
       <AppBar
         position="fixed"
+        color = "transparent"
+        variant = "outlined"
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px - ${theme.spacing(MINI_DRAWER)})` },
-          ml: { sm: `${drawerWidth}px` },
+          width: { md: `calc(100% - ${drawerWidth + 64}px - ${theme.spacing(MINI_DRAWER)})` },
+          ml: { md: `${drawerWidth}px` },
+          mr: { md: '32px' },
+          mt: { md: '16px' },
+          backgroundColor:theme.palette.background.paper,
+          borderRadius: { md: '5px' },
         }}
       >
         <Toolbar>
@@ -102,7 +107,7 @@ export const Customers = observer((props: Props) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+            工具条
           </Typography>
         </Toolbar>
       </AppBar>
@@ -125,7 +130,6 @@ export const Customers = observer((props: Props) => {
             '& .MuiDrawer-paper': { 
               boxSizing: 'border-box', 
               width: drawerWidth,
-              bgcolor: theme.palette.background.default,
             },
           }}
         >
@@ -139,7 +143,8 @@ export const Customers = observer((props: Props) => {
               boxSizing: 'border-box', 
               width: drawerWidth, 
               left: theme.spacing(MINI_DRAWER), 
-              borderLeft: theme.palette.divider + ' solid 1px'
+              borderLeft: theme.palette.divider + ' solid 1px',
+              backgroundColor: theme.palette.background.default,
             },
           }}
           open
