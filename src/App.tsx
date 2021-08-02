@@ -12,11 +12,11 @@ const App = observer(() => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ display: 'flex' }}>
+      <Box sx={{ display: 'flex', height:'100%', width: '100%'}}>
         <CssBaseline />
         <MiniDrawer />
-        <Box component="main" sx={{ flexGrow: 1, p:0}}>
-          <Customers/>
+        <Box component="main" sx={{ flex: 1, p: 0, height: '100%', display: 'flex'}}>
+          <Customers />
         </Box>
         <Navigation/>
       </Box>
