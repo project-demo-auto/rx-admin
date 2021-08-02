@@ -5,6 +5,7 @@ import { MiniDrawer } from './compontents/MiniDrawer';
 import { observer } from 'mobx-react';
 import { LIGHT_THEME_META } from './consts';
 import { Navigation } from './compontents/Navigation';
+import { Customers } from './compontents/Customers';
 
 const App = observer(() => {
   const theme = createTheme(LIGHT_THEME_META);
@@ -15,7 +16,7 @@ const App = observer(() => {
         <CssBaseline />
         <MiniDrawer />
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        dd
+          <Customers/>
         </Box>
         <Navigation/>
       </Box>
