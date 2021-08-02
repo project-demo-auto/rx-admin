@@ -26,37 +26,9 @@ export const ResponsiveLayout = (props: {
     <Box sx={{ 
       display: 'flex', 
       flex: 1, 
-      position: 'relative', 
       width:'100%', 
       height: '100%' 
     }}>
-      <Box
-        sx={{
-          position: "absolute",
-          width: { 
-            lg: `calc(100% - ${drawerWidth}px)`, 
-            sm: `100%`,
-          },
-          ml:{
-            lg:drawerWidth + 'px',
-          },
-          backgroundColor: theme.palette.background.default,
-          borderBottom: theme.palette.divider + ' solid 1px',
-        }}
-      >
-        <Toolbar {...toolbarProps}>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { lg: 'none', md: 'block' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          {toolbar}
-        </Toolbar>
-      </Box>
       <Box
         component="nav"
         sx={{ 
@@ -96,8 +68,21 @@ export const ResponsiveLayout = (props: {
         </Box>
       </Box>
       <Box sx={{display: 'flex', flex:1, height:'100%', flexFlow:'column'}}>
-        <Toolbar {...toolbarProps} sx={{zIndex:-1}} />
-         {children}
+        <Toolbar {...toolbarProps}>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { lg: 'none', md: 'block' } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          {toolbar}
+        </Toolbar>
+        <Box sx={{display: 'flex', flex:1, width:'100%', flexFlow:'column', height: '0'}} >
+          {children}
+        </Box>
       </Box>
     </Box>
   );

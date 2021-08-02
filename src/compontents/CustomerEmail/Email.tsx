@@ -1,30 +1,19 @@
 import * as React from 'react';
 import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import IconButton from '@material-ui/core/IconButton';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
-import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { Button, useTheme, InputBase, InputAdornment } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
-
-const drawerWidth = 240;
+import { ResponsiveLayout } from '../ResponsiveLayout';
 
 export function Email() {
-
-  const [mobileOpen, setMobileOpen] = React.useState(false);
   const theme = useTheme();
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
 
   const drawer = (
     <div>
@@ -61,73 +50,9 @@ export function Email() {
     </div>
   );
 
-  return (
-    <Box sx={{ display: 'flex',position:'relative' }}>
-      <Toolbar
-        variant = "dense"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-          position: 'absolute',
-          borderBottom: theme.palette.divider + ' solid 1px',
-        }}      
-      >
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="start"
-          onClick={handleDrawerToggle}
-          sx={{ mr: 2, display: { sm: 'none' } }}
-        >
-          <MenuIcon />
-        </IconButton>
-        
-        <InputBase
-          sx={{ ml: 1, flex: 1 }}
-          placeholder="Search mail"
-          startAdornment={
-            <InputAdornment position="start">
-              <Search />
-            </InputAdornment>
-          }
-          inputProps={{ 
-            'aria-label': 'Search mail',
-          }}
-        />
-      </Toolbar>
-      <Box
-        component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
-      >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Drawer
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
-          {drawer}
-        </Drawer>
-        <Box
-          sx={{
-            display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-            borderRight: theme.palette.divider + ' solid 1px',
-          }}
-        >
-          {drawer}
-        </Box>
-      </Box>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Toolbar variant = "dense" sx={{zIndex:-1}}/>
-        <Typography paragraph>
+  const content = (
+    <>
+            <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
           enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
@@ -141,6 +66,7 @@ export function Email() {
           consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
           sapien faucibus et molestie ac.
         </Typography>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         <Typography paragraph>
           Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
           eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
@@ -154,7 +80,35 @@ export function Email() {
           eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
           posuere sollicitudin aliquam ultrices sagittis orci a.
         </Typography>
+    </>
+  )
+
+  const toolbar = (
+    <InputBase
+      sx={{ ml: 1, flex: 1 }}
+      placeholder="Search mail"
+      startAdornment={
+        <InputAdornment position="start">
+          <Search />
+        </InputAdornment>
+      }
+      inputProps={{ 
+        'aria-label': 'Search mail',
+      }}
+    />
+  )
+
+  return (
+    <ResponsiveLayout
+      drawer = {drawer}
+      toolbar = {toolbar}
+      toolbarProps = {{
+        //varient : 'dense'
+      }}
+    >
+      <Box sx={{flex:1, display:'flex', flexFlow: 'column', overflowY: 'auto'}}>
+        {content}
       </Box>
-    </Box>
+    </ResponsiveLayout>
   );
 }

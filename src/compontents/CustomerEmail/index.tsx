@@ -1,8 +1,6 @@
 import * as React from 'react';
-import AppBar from '@material-ui/core/AppBar';
 import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import List from '@material-ui/core/List';
@@ -10,35 +8,17 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
-import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { observer } from 'mobx-react';
 import { InputAdornment, Container, useTheme, Paper, Avatar, SvgIcon } from '@material-ui/core';
-import { MINI_DRAWER_SIZE } from '../../consts';
 import { Search } from '@material-ui/icons';
 import InputBase from '@material-ui/core/InputBase';
 import { Email } from './Email';
 import { ResponsiveLayout } from '../ResponsiveLayout';
 
-const drawerWidth = 260;
-
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window?: () => Window;
-}
-
-export const Customers = observer((props: Props) => {
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+export const Customers = observer(() => {
   const theme = useTheme();
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
 
   const drawer = (
     <div>
@@ -105,14 +85,27 @@ export const Customers = observer((props: Props) => {
   )
 
   const content = (
-    <Paper 
-      variant = 'outlined'
-      sx = {{
-        mt:theme.spacing(3)
+    <Container 
+      sx={{
+        flex:1, 
+        display:'flex', 
+        height: '0',
       }}
     >
-      <Email />
-    </Paper>
+      <Paper 
+        variant = 'outlined'
+        sx = {{
+          mt:theme.spacing(3),
+          mb:theme.spacing(3),
+          flex:1, 
+          width:'100%',
+          borderRadius:'10px',
+          display: 'flex',
+        }}
+      >
+        <Email />
+      </Paper>
+    </Container>
   ) 
 
   return (
