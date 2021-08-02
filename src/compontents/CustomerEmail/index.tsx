@@ -15,7 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { observer } from 'mobx-react';
-import { InputAdornment, OutlinedInput, Container, useTheme, Paper } from '@material-ui/core';
+import { InputAdornment, OutlinedInput, Container, useTheme, Paper, Avatar, SvgIcon, Tooltip } from '@material-ui/core';
 import { MINI_DRAWER_SIZE } from '../../consts';
 import { Search } from '@material-ui/icons';
 import InputBase from '@material-ui/core/InputBase';
@@ -107,9 +107,21 @@ export const Customers = observer((props: Props) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="subtitle1" component="div" sx={{display:'flex', alignItems:'center', mr:2}}>
+            <Avatar sx={{mr:1, width: 32, height: 32, color:'red' }}>M</Avatar>
             MicroSoft
           </Typography>
+          <Box sx={{flex:1}}></Box>
+          <IconButton>
+            <SvgIcon>
+              <path fill="currentColor" d="M16,17H7V10.5C7,8 9,6 11.5,6C14,6 16,8 16,10.5M18,16V10.5C18,7.43 15.86,4.86 13,4.18V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V4.18C7.13,4.86 5,7.43 5,10.5V16L3,18V19H20V18M11.5,22A2,2 0 0,0 13.5,20H9.5A2,2 0 0,0 11.5,22Z" />
+            </SvgIcon>
+          </IconButton>
+          <IconButton>
+            <SvgIcon>
+              <path fill="currentColor" d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" />
+            </SvgIcon>
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Box
