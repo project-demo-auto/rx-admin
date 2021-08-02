@@ -86,14 +86,14 @@ export const Customers = observer((props: Props) => {
       <AppBar
         position="fixed"
         color = "transparent"
-        variant = "outlined"
+        elevation = {0}
         sx={{
-          width: { md: `calc(100% - ${drawerWidth + 64}px - ${theme.spacing(MINI_DRAWER)})` },
-          ml: { md: `${drawerWidth}px` },
-          mr: { md: '32px' },
-          mt: { md: '16px' },
-          backgroundColor:theme.palette.background.paper,
-          borderRadius: { md: '5px' },
+          width: { 
+            lg: `calc(100% - ${drawerWidth}px - ${theme.spacing(MINI_DRAWER)})`, 
+            sm: `calc(100% - ${theme.spacing(MINI_DRAWER)})`,
+          },
+          backgroundColor:theme.palette.background.default,
+          borderBottom: theme.palette.divider + ' solid 1px',
         }}
       >
         <Toolbar>
@@ -102,7 +102,7 @@ export const Customers = observer((props: Props) => {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2, display: { lg: 'none', md: 'block' } }}
           >
             <MenuIcon />
           </IconButton>
@@ -126,7 +126,7 @@ export const Customers = observer((props: Props) => {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
+            display: { sm: 'block', md: 'none' },
             '& .MuiDrawer-paper': { 
               boxSizing: 'border-box', 
               width: drawerWidth,
@@ -138,7 +138,7 @@ export const Customers = observer((props: Props) => {
         <Drawer
           variant="permanent"
           sx={{
-            display: { xs: 'none', sm: 'block' },
+            display: { xs:'none', sm: 'none', md:'none', lg: 'block' },
             '& .MuiDrawer-paper': { 
               boxSizing: 'border-box', 
               width: drawerWidth, 
