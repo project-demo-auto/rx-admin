@@ -15,10 +15,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { observer } from 'mobx-react';
-import { InputAdornment, OutlinedInput, TextField, useTheme } from '@material-ui/core';
-import { MINI_DRAWER } from '../../consts';
+import { InputAdornment, OutlinedInput, Container, useTheme, Paper } from '@material-ui/core';
+import { MINI_DRAWER_SIZE } from '../../consts';
 import { Search } from '@material-ui/icons';
 import InputBase from '@material-ui/core/InputBase';
+import { Email } from './Email';
 
 const drawerWidth = 260;
 
@@ -89,8 +90,8 @@ export const Customers = observer((props: Props) => {
         elevation = {0}
         sx={{
           width: { 
-            lg: `calc(100% - ${drawerWidth}px - ${theme.spacing(MINI_DRAWER)})`, 
-            sm: `calc(100% - ${theme.spacing(MINI_DRAWER)})`,
+            lg: `calc(100% - ${drawerWidth}px - ${theme.spacing(MINI_DRAWER_SIZE)})`, 
+            sm: `calc(100% - ${theme.spacing(MINI_DRAWER_SIZE)})`,
           },
           backgroundColor:theme.palette.background.default,
           borderBottom: theme.palette.divider + ' solid 1px',
@@ -113,7 +114,10 @@ export const Customers = observer((props: Props) => {
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { lg: drawerWidth }, flexShrink: { lg: 0 } }}
+        sx={{ 
+          width: { lg: drawerWidth }, 
+          flexShrink: { lg: 0 },
+        }}
         aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -142,7 +146,7 @@ export const Customers = observer((props: Props) => {
             '& .MuiDrawer-paper': { 
               boxSizing: 'border-box', 
               width: drawerWidth, 
-              left: theme.spacing(MINI_DRAWER), 
+              left: theme.spacing(MINI_DRAWER_SIZE), 
               borderLeft: theme.palette.divider + ' solid 1px',
               backgroundColor: theme.palette.background.default,
             },
@@ -152,36 +156,17 @@ export const Customers = observer((props: Props) => {
           {drawer}
         </Drawer>
       </Box>
-      <Box sx={{ flexGrow: 1, p: 3 }}>
+      <Container maxWidth = 'xl'>
         <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-          eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-          tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-          sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-          et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-          tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
-      </Box>
+        <Paper 
+          variant = 'outlined'
+          sx = {{
+            mt:theme.spacing(3)
+          }}
+        >
+          <Email />
+        </Paper>
+      </Container>
     </Box>
   );
 })

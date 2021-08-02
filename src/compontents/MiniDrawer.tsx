@@ -7,7 +7,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import { Avatar, createTheme, IconButton, SvgIcon, ThemeProvider } from '@material-ui/core';
 import MuiTooltip, { TooltipProps, tooltipClasses } from '@material-ui/core/Tooltip';
-import { DARK_THEME_META, LIGHT_THEME_META, MINI_DRAWER, MODE_LIGHT } from '../consts';
+import { DARK_THEME_META, LIGHT_THEME_META, MINI_DRAWER_SIZE, MODE_LIGHT } from '../consts';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { MODULES } from '../data/modules';
 import { observer } from 'mobx-react';
@@ -37,7 +37,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     overflowX: 'hidden',
     '& .MuiDrawer-paper': {
       overflowX: 'hidden',
-      width: theme.spacing(MINI_DRAWER),
+      width: theme.spacing(MINI_DRAWER_SIZE),
       background: theme.palette.background.paper,
       boxShadow: theme.shadows[1],
       display: 'flex',
@@ -68,7 +68,7 @@ export const MiniDrawer = observer(() => {
           variant="permanent" 
           open = {true}
           sx={{
-            width:'80px',
+            width:theme.spacing(MINI_DRAWER_SIZE),
             display: { sm: 'block', xs: 'none' }
           }}
         >

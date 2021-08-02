@@ -1,6 +1,6 @@
 import { ThemeOptions } from "@material-ui/core";
 
-export const MINI_DRAWER = 9;
+export const MINI_DRAWER_SIZE = 9;
 export const MODE_DARK = 'dark';
 export const MODE_LIGHT = 'light';
 
