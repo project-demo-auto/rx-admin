@@ -15,7 +15,7 @@ export const Customers = observer(() => {
   const theme = useTheme();
 
   const drawer = (
-    <div>
+    <>
       <Toolbar>
         <InputBase 
           size = "small" 
@@ -36,7 +36,7 @@ export const Customers = observer(() => {
         />
       </Toolbar>
       <CustomerTree />
-    </div>
+    </>
   );
 
   const toolbar = (

@@ -15,6 +15,7 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import FolderOpenIcon from '@material-ui/icons/FolderOpen';
+import { HOVER_SCROLL_BAR } from '../../consts';
 
 declare module 'react' {
   interface CSSProperties {
@@ -93,7 +94,7 @@ export default function CustomerTree() {
       defaultCollapseIcon={<ArrowDropDownIcon />}
       defaultExpandIcon={<ArrowRightIcon />}
       defaultEndIcon={<div style={{ width: 24 }} />}
-      sx={{ flexGrow: 1, overflowY: 'auto' }}
+      sx={{ flex: 1, overflowY: 'auto', ...HOVER_SCROLL_BAR}}
     >
       <StyledTreeItemRoot nodeId="1"
         label={

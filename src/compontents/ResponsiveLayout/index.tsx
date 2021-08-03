@@ -7,7 +7,6 @@ import Toolbar, { ToolbarProps } from '@material-ui/core/Toolbar';
 import { useTheme } from '@material-ui/core';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { HOVER_SCROLL_BAR } from '../../consts';
 
 export const ResponsiveLayout = (props: {
   defualtDrawerWidth?: number,
@@ -140,9 +139,7 @@ export const ResponsiveLayout = (props: {
             display: { xs:'none', sm: 'none', md:'none', lg: 'flex' },
             borderRight: theme.palette.divider + ' solid 1px',
             height: '100%',
-            overflowY: 'auto',
-            overflowX: 'clip',
-            ...HOVER_SCROLL_BAR,
+            flexFlow: 'column',
           }}
         >
           {drawer}
