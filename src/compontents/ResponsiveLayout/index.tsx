@@ -39,7 +39,7 @@ export const ResponsiveLayout = (props: {
   };
 
   const handleMouseDown = (event:React.MouseEvent<HTMLElement>)=>{
-    document.body.classList.add('can-not-be-selected');
+    document.body.classList.add('drawer-resizing');
     setDraging(true);
     setLastX(event.screenX);
   }
@@ -59,7 +59,7 @@ export const ResponsiveLayout = (props: {
   }
 
   const handleMouseup = ()=>{
-    document.body.classList.remove('can-not-be-selected');
+    document.body.classList.remove('drawer-resizing');
     setDraging(false);
   }
 

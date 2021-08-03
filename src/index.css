@@ -21,10 +21,10 @@ code {
     monospace;
 }
 
-.can-not-be-selected{
+.drawer-resizing{
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  cursor:default;
+  cursor: 'w-resize';
 }
