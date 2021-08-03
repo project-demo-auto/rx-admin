@@ -15,7 +15,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import FolderIcon from '@material-ui/icons/Folder';
+import FolderOpenIcon from '@material-ui/icons/FolderOpen';
 
 declare module 'react' {
   interface CSSProperties {
@@ -94,7 +94,7 @@ export default function CustomerTree() {
       defaultCollapseIcon={<ArrowDropDownIcon />}
       defaultExpandIcon={<ArrowRightIcon />}
       defaultEndIcon={<div style={{ width: 24 }} />}
-      sx={{ height: 264, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+      sx={{ flexGrow: 1, overflowY: 'auto' }}
     >
       <StyledTreeItemRoot nodeId="1"
         label={
@@ -109,8 +109,8 @@ export default function CustomerTree() {
           </Box>
         }
       >
-        <StyledTreeItem nodeId="11" labelText="法国" labelIcon={FolderIcon}>
-          <StyledTreeItem nodeId="111" labelText="重点客户" labelIcon={FolderIcon}>
+        <StyledTreeItem nodeId="11" labelText="法国" labelIcon={FolderOpenIcon}>
+          <StyledTreeItem nodeId="111" labelText="重点客户" labelIcon={FolderOpenIcon}>
             <StyledTreeItemRoot nodeId="1111" 
              label={
               <Box sx={{ display: 'flex', alignItems: 'center', p: 0.5, pr: 0 }}>
