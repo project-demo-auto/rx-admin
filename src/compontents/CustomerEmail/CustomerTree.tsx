@@ -4,7 +4,6 @@ import Box from '@material-ui/core/Box';
 import TreeView from '@material-ui/lab/TreeView';
 import TreeItem, { TreeItemProps, treeItemClasses } from '@material-ui/lab/TreeItem';
 import Typography from '@material-ui/core/Typography';
-import MailIcon from '@material-ui/icons/Mail';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Label from '@material-ui/icons/Label';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';

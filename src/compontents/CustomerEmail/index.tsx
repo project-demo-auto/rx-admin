@@ -39,6 +39,7 @@ export const Customers = observer(() => {
               <Search />
             </InputAdornment>
           }
+          placeholder="搜索客户"
         />
       </Toolbar>
       <CustomerTree />
@@ -49,7 +50,7 @@ export const Customers = observer(() => {
     <>
       <Typography variant="subtitle1" component="div" sx={{display:'flex', alignItems:'center', mr:2}}>
         <Avatar sx={{mr:1, width: 32, height: 32, color:'red' }}>M</Avatar>
-        MicroSoft
+        MicroSoft <SvgIcon><path fill="currentColor" d="M7,10L12,15L17,10H7Z" /></SvgIcon>
       </Typography>
       <Box sx={{flex:1}}></Box>
       <IconButton>
@@ -81,7 +82,11 @@ export const Customers = observer(() => {
           },
           flex:1, 
           width:'100%',
-          borderRadius:'10px',
+          borderRadius:{
+            md:'10px',
+            sm: 0,
+            xs: 0,
+          },
           display: 'flex',
         }}
       >

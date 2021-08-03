@@ -12,8 +12,9 @@ export const ResponsiveLayout = (props: {
   toolbar?: any,
   children?: any,
   toolbarProps?: ToolbarProps,
+  hideDrawerOnMobile?: boolean,
 }) => {
-  const {drawerWidth=260, drawer, toolbar, toolbarProps = {}, children} = props;
+  const {drawerWidth=260, drawer, toolbar, toolbarProps = {}, hideDrawerOnMobile, children} = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const theme = useTheme();
 
@@ -36,23 +37,27 @@ export const ResponsiveLayout = (props: {
         }}
         aria-label="mailbox folders"
       >
-        <Drawer
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { sm: 'block', md: 'none' },
-            '& .MuiDrawer-paper': { 
-              boxSizing: 'border-box', 
-              width: drawerWidth,
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
+        {
+          !hideDrawerOnMobile &&
+            <Drawer
+            variant="temporary"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+              display: { sm: 'block', md: 'none' },
+              '& .MuiDrawer-paper': { 
+                boxSizing: 'border-box', 
+                width: drawerWidth,
+              },
+            }}
+          >
+            {drawer}
+          </Drawer>
+        }
+
         <Box
           sx={{
             display: { xs:'none', sm: 'none', md:'none', lg: 'block' },
@@ -68,15 +73,18 @@ export const ResponsiveLayout = (props: {
       </Box>
       <Box sx={{display: 'flex', flex:1, height:'100%', flexFlow:'column'}}>
         <Toolbar {...toolbarProps}>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { lg: 'none', md: 'block' } }}
-          >
-            <MenuIcon />
-          </IconButton>
+          {
+            !hideDrawerOnMobile &&
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { lg: 'none', md: 'block' } }}
+            >
+              <MenuIcon />
+            </IconButton>            
+          }
           {toolbar}
         </Toolbar>
         <Box sx={{display: 'flex', flex:1, width:'100%', flexFlow:'column', height: '0'}} >

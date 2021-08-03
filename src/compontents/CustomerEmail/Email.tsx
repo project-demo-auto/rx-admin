@@ -52,7 +52,7 @@ export function Email() {
 
   const content = (
     <>
-            <Typography paragraph>
+      <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
           enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
@@ -86,14 +86,14 @@ export function Email() {
   const toolbar = (
     <InputBase
       sx={{ ml: 1, flex: 1 }}
-      placeholder="Search mail"
+      placeholder="搜索邮件"
       startAdornment={
         <InputAdornment position="start">
           <Search />
         </InputAdornment>
       }
       inputProps={{ 
-        'aria-label': 'Search mail',
+        'aria-label': '搜索邮件',
       }}
     />
   )
@@ -108,6 +108,7 @@ export function Email() {
           borderBottom: theme.palette.divider + ' solid 1px',
         }
       }}
+      hideDrawerOnMobile
     >
       <Box sx={{flex:1, display:'flex', flexFlow: 'column', overflowY: 'auto', p: 3}}>
         {content}
