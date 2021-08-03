@@ -16,6 +16,7 @@ import { Search } from '@material-ui/icons';
 import InputBase from '@material-ui/core/InputBase';
 import { Email } from './Email';
 import { ResponsiveLayout } from '../ResponsiveLayout';
+import CustomerTree from './CustomerTree';
 
 export const Customers = observer(() => {
   const theme = useTheme();
@@ -40,27 +41,7 @@ export const Customers = observer(() => {
           }
         />
       </Toolbar>
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      <CustomerTree />
     </div>
   );
 
@@ -85,27 +66,27 @@ export const Customers = observer(() => {
   )
 
   const content = (
-    <Container 
+    <Box 
       sx={{
         flex:1, 
         display:'flex', 
         height: '0',
       }}
     >
-      <Paper 
-        variant = 'outlined'
+      <Box 
+        //variant = 'outlined'
         sx = {{
-          mt:theme.spacing(3),
-          mb:theme.spacing(3),
+          //mt:theme.spacing(3),
+          //mb:theme.spacing(3),
           flex:1, 
           width:'100%',
-          borderRadius:'10px',
+          //borderRadius:'10px',
           display: 'flex',
         }}
       >
         <Email />
-      </Paper>
-    </Container>
+      </Box>
+    </Box>
   ) 
 
   return (
