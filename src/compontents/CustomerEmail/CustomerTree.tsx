@@ -13,7 +13,9 @@ import ForumIcon from '@material-ui/icons/Forum';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import { SvgIconProps } from '@material-ui/core/SvgIcon';
+import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import FolderIcon from '@material-ui/icons/Folder';
 
 declare module 'react' {
   interface CSSProperties {
@@ -25,7 +27,7 @@ declare module 'react' {
 type StyledTreeItemProps = TreeItemProps & {
   bgColor?: string;
   color?: string;
-  labelIcon: React.ElementType<SvgIconProps>;
+  labelIcon?: React.ElementType<SvgIconProps>;
   labelInfo?: string;
   labelText: string;
 };
@@ -34,9 +36,6 @@ const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
   color: theme.palette.text.secondary,
   [`& .${treeItemClasses.content}`]: {
     color: theme.palette.text.secondary,
-    borderTopRightRadius: theme.spacing(2),
-    borderBottomRightRadius: theme.spacing(2),
-    paddingRight: theme.spacing(1),
     fontWeight: theme.typography.fontWeightMedium,
     '&.Mui-expanded': {
       fontWeight: theme.typography.fontWeightRegular,
@@ -51,12 +50,6 @@ const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
     [`& .${treeItemClasses.label}`]: {
       fontWeight: 'inherit',
       color: 'inherit',
-    },
-  },
-  [`& .${treeItemClasses.group}`]: {
-    marginLeft: 0,
-    [`& .${treeItemClasses.content}`]: {
-      paddingLeft: theme.spacing(2),
     },
   },
 }));
@@ -103,8 +96,73 @@ export default function CustomerTree() {
       defaultEndIcon={<div style={{ width: 24 }} />}
       sx={{ height: 264, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
     >
-      <StyledTreeItem nodeId="1" labelText="All Mail" labelIcon={MailIcon} />
-      <StyledTreeItem nodeId="2" labelText="Trash" labelIcon={DeleteIcon} />
+      <StyledTreeItemRoot nodeId="1"
+        label={
+          <Box sx={{ display: 'flex', alignItems: 'center', p: 0.5, pr: 0 }}>
+            <Box component={AccountCircleIcon} color="inherit" sx={{ mr: 1 }} />
+            <Typography variant="body2" sx={{ fontWeight: 'inherit', flexGrow: 1 }}>
+              Martin
+            </Typography>
+            <Typography variant="caption" color="inherit">
+              
+            </Typography>
+          </Box>
+        }
+      >
+        <StyledTreeItem nodeId="11" labelText="法国" labelIcon={FolderIcon}>
+          <StyledTreeItem nodeId="111" labelText="重点客户" labelIcon={FolderIcon}>
+            <StyledTreeItemRoot nodeId="1111" 
+             label={
+              <Box sx={{ display: 'flex', alignItems: 'center', p: 0.5, pr: 0 }}>
+                <SvgIcon color="inherit" sx={{ mr: 1 }}>
+                  <path fill="currentColor" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,6A2,2 0 0,0 10,8A2,2 0 0,0 12,10A2,2 0 0,0 14,8A2,2 0 0,0 12,6M12,13C14.67,13 20,14.33 20,17V20H4V17C4,14.33 9.33,13 12,13M12,14.9C9.03,14.9 5.9,16.36 5.9,17V18.1H18.1V17C18.1,16.36 14.97,14.9 12,14.9Z" />
+                </SvgIcon>
+                <Typography variant="body2" sx={{ fontWeight: 'inherit', flexGrow: 1 }}>
+                  Comapny 1
+                </Typography>
+                <Typography variant="caption" color="inherit">
+                  
+                </Typography>
+              </Box>
+            } />
+            <StyledTreeItemRoot nodeId="1112" 
+             label={
+              <Box sx={{ display: 'flex', alignItems: 'center', p: 0.5, pr: 0 }}>
+                <SvgIcon color="inherit" sx={{ mr: 1 }}>
+                  <path fill="currentColor" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,6A2,2 0 0,0 10,8A2,2 0 0,0 12,10A2,2 0 0,0 14,8A2,2 0 0,0 12,6M12,13C14.67,13 20,14.33 20,17V20H4V17C4,14.33 9.33,13 12,13M12,14.9C9.03,14.9 5.9,16.36 5.9,17V18.1H18.1V17C18.1,16.36 14.97,14.9 12,14.9Z" />
+                </SvgIcon>
+                <Typography variant="body2" sx={{ fontWeight: 'inherit', flexGrow: 1 }}>
+                  Comapny 2
+                </Typography>
+                <Typography variant="caption" color="inherit">
+                  
+                </Typography>
+              </Box>
+            } />
+            <StyledTreeItemRoot nodeId="1113" 
+             label={
+              <Box sx={{ display: 'flex', alignItems: 'center', p: 0.5, pr: 0 }}>
+                <SvgIcon color="inherit" sx={{ mr: 1 }}>
+                  <path fill="currentColor" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,6A2,2 0 0,0 10,8A2,2 0 0,0 12,10A2,2 0 0,0 14,8A2,2 0 0,0 12,6M12,13C14.67,13 20,14.33 20,17V20H4V17C4,14.33 9.33,13 12,13M12,14.9C9.03,14.9 5.9,16.36 5.9,17V18.1H18.1V17C18.1,16.36 14.97,14.9 12,14.9Z" />
+                </SvgIcon>
+                <Typography variant="body2" sx={{ fontWeight: 'inherit', flexGrow: 1 }}>
+                  Comapny 3
+                </Typography>
+                <Typography variant="caption" color="inherit">
+                  
+                </Typography>
+              </Box>
+            } />
+
+          </StyledTreeItem>
+        </StyledTreeItem>
+        <StyledTreeItem nodeId="12" labelText="意大利">
+          <StyledTreeItem nodeId="121" labelText="重点客户">
+            <StyledTreeItem nodeId="1211" labelText="Company1" labelIcon={DeleteIcon} />
+            <StyledTreeItem nodeId="1212" labelText="Company2" labelIcon={DeleteIcon} />
+          </StyledTreeItem>
+        </StyledTreeItem>
+      </StyledTreeItemRoot>
       <StyledTreeItem nodeId="3" labelText="Categories" labelIcon={Label}>
         <StyledTreeItem
           nodeId="5"
