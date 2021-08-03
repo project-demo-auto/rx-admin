@@ -7,6 +7,7 @@ import Toolbar, { ToolbarProps } from '@material-ui/core/Toolbar';
 import { useTheme } from '@material-ui/core';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { HOVER_SCROLL_BAR } from '../../consts';
 
 export const ResponsiveLayout = (props: {
   defualtDrawerWidth?: number,
@@ -17,6 +18,7 @@ export const ResponsiveLayout = (props: {
   hideDrawerOnMobile?: boolean,
   drawerMinWidth?: number,
   drawerMaxWidth?: number,
+  className?: string,
 }) => {
   const {
     defualtDrawerWidth = 260, 
@@ -26,6 +28,7 @@ export const ResponsiveLayout = (props: {
     toolbar, 
     toolbarProps = {}, 
     hideDrawerOnMobile, 
+    className,
     children
   } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -74,11 +77,33 @@ export const ResponsiveLayout = (props: {
   })
 
   return (
-    <Box sx={{ 
+    <Box 
+      className = {className}
+      sx={{ 
       display: 'flex', 
       flex: 1, 
       width:'100%', 
-      height: '100%' 
+      height: '100%',
+      '& ::-webkit-scrollbar':{
+        lg:{
+          display: 'block',
+          width: '0.3rem',
+          height: '0.3rem',          
+        }
+      }, 
+      '& ::-webkit-scrollbar-track':{
+        lg:{
+          borderRadius: 0,          
+        }
+      },
+      '& ::-webkit-scrollbar-thumb':{
+        lg:{
+          borderRadius: '0.2rem',
+          background: theme.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(255, 255, 255, 0.3)',
+          transition: 'all .2s',          
+        }
+      }
+
     }}>
       <Box
         component="nav"
@@ -112,9 +137,12 @@ export const ResponsiveLayout = (props: {
         <Box
           sx={{
             position: 'relative',
-            display: { xs:'none', sm: 'none', md:'none', lg: 'block' },
+            display: { xs:'none', sm: 'none', md:'none', lg: 'flex' },
             borderRight: theme.palette.divider + ' solid 1px',
-            height: '100%'
+            height: '100%',
+            overflowY: 'auto',
+            overflowX: 'clip',
+            ...HOVER_SCROLL_BAR,
           }}
         >
           {drawer}
@@ -150,7 +178,13 @@ export const ResponsiveLayout = (props: {
           }
           {toolbar}
         </Toolbar>
-        <Box sx={{display: 'flex', flex:1, width:'100%', flexFlow:'column', height: '0'}} >
+        <Box sx={{
+          display: 'flex', 
+          flex:1, 
+          width:'100%', 
+          flexFlow:'column', 
+          height: '0',
+        }} >
           {children}
         </Box>
       </Box>

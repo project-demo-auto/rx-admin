@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { Button, useTheme, InputBase, InputAdornment } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 import { ResponsiveLayout } from '../ResponsiveLayout';
+import { HOVER_SCROLL_BAR } from '../../consts';
 
 export function Email() {
   const theme = useTheme();
@@ -110,7 +111,10 @@ export function Email() {
       }}
       hideDrawerOnMobile
     >
-      <Box sx={{flex:1, display:'flex', flexFlow: 'column', overflowY: 'auto', p: 3}}>
+      <Box sx={{
+        flex:1, display:'flex', flexFlow: 'column', overflowY: 'auto', p: 3,
+        ...HOVER_SCROLL_BAR,
+      }}>
         {content}
       </Box>
     </ResponsiveLayout>

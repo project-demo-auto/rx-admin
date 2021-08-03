@@ -32,3 +32,18 @@ export const LIGHT_THEME_META: ThemeOptions = {
     divider: '#ebe9f1',
   },
 }
+
+export const HOVER_SCROLL_BAR = {
+  '&::-webkit-scrollbar':{
+    lg: {
+      display: 'none',
+    }
+  }, 
+  '&:hover':{
+    '&::-webkit-scrollbar':{
+      lg:{
+        display: 'block',
+      }
+    }
+  },
+}
