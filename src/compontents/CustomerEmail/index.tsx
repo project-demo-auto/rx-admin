@@ -73,19 +73,18 @@ export const Customers = observer(() => {
         height: '0',
       }}
     >
-      <Box 
-        //variant = 'outlined'
+      <Paper 
+        variant = 'outlined'
         sx = {{
-          //mt:theme.spacing(3),
-          //mb:theme.spacing(3),
+          m:theme.spacing(3),
           flex:1, 
           width:'100%',
-          //borderRadius:'10px',
+          borderRadius:'10px',
           display: 'flex',
         }}
       >
         <Email />
-      </Box>
+      </Paper>
     </Box>
   ) 
 
