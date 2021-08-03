@@ -1,17 +1,10 @@
 import * as React from 'react';
 import Box from '@material-ui/core/Box';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { observer } from 'mobx-react';
-import { InputAdornment, Container, useTheme, Paper, Avatar, SvgIcon } from '@material-ui/core';
+import { InputAdornment, useTheme, Paper, Avatar, SvgIcon } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 import InputBase from '@material-ui/core/InputBase';
 import { Email } from './Email';

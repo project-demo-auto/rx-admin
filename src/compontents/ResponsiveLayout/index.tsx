@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar, { ToolbarProps } from '@material-ui/core/Toolbar';
 import { useTheme } from '@material-ui/core';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useEffect } from 'react';
 
 export const ResponsiveLayout = (props: {
@@ -15,14 +15,24 @@ export const ResponsiveLayout = (props: {
   children?: any,
   toolbarProps?: ToolbarProps,
   hideDrawerOnMobile?: boolean,
+  drawerMinWidth?: number,
+  drawerMaxWidth?: number,
 }) => {
-  const {defualtDrawerWidth =260, drawer, toolbar, toolbarProps = {}, hideDrawerOnMobile, children} = props;
+  const {
+    defualtDrawerWidth = 260, 
+    drawerMinWidth = 180,
+    drawerMaxWidth = 500,
+    drawer, 
+    toolbar, 
+    toolbarProps = {}, 
+    hideDrawerOnMobile, 
+    children
+  } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [drawerWidth, setDrawerWidth] = useState(defualtDrawerWidth);
   const [draging, setDraging] = useState(false);
   const [lastX, setLastX] = useState(0);
   const theme = useTheme();
-  const drawerRef = useRef(null);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -36,14 +46,16 @@ export const ResponsiveLayout = (props: {
 
   const handleMouseMove = (event:MouseEvent)=>{
     if(draging){
-      const newDrawerWidth = drawerWidth - Math.round((lastX - event.screenX)/1.5);
+      let newDrawerWidth = drawerWidth - Math.round((lastX - event.screenX));
+      if(newDrawerWidth < drawerMinWidth){
+        newDrawerWidth = drawerMinWidth
+      }
+      if(newDrawerWidth > drawerMaxWidth){
+        newDrawerWidth = drawerMaxWidth
+      }
       setDrawerWidth(newDrawerWidth);
       setLastX(event.x);
-      if(drawerRef.current){
-        ((drawerRef.current as unknown) as HTMLElement).style.width = newDrawerWidth + 'px';
-        console.log('哈哈', ((drawerRef.current as unknown) as HTMLElement).style.width)
-      }
-    }
+   }
   }
 
   const handleMouseup = ()=>{
@@ -98,14 +110,10 @@ export const ResponsiveLayout = (props: {
         }
 
         <Box
-          ref = {drawerRef}
           sx={{
             position: 'relative',
             display: { xs:'none', sm: 'none', md:'none', lg: 'block' },
-            //width: drawerWidth, 
-            //borderLeft: theme.palette.divider + ' solid 1px',
             borderRight: theme.palette.divider + ' solid 1px',
-            //backgroundColor: theme.palette.background.default,
             height: '100%'
           }}
         >
