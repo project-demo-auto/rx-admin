@@ -76,7 +76,9 @@ export const Customers = observer(() => {
       <Paper 
         variant = 'outlined'
         sx = {{
-          m:theme.spacing(3),
+          m:{
+            md:theme.spacing(3)
+          },
           flex:1, 
           width:'100%',
           borderRadius:'10px',
